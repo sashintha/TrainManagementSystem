@@ -1,7 +1,9 @@
 # TrainManagementSystem
 This is a management system for trains.
 
-To get modules:
+<h4>To get modules/dependencies:</h4>
 npm init
+<br>
 npm install sql
+<br>
 nom install express
