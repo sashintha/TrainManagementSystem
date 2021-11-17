@@ -6,4 +6,4 @@ npm init
 <br>
 npm install sql
 <br>
-nom install express
+npm install express
