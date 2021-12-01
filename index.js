@@ -35,7 +35,16 @@ app.post('/', (req, res) => {
   } else {
     res.redirect('/');
   }
-})
+});
 
+app.post('/employees', (req, res) => {
+  //SQL QUERY GET EMPLOYEE NAME BY EMAIL using req.body.email
+  res.redirect('/employees');
+});
+
+app.post('/schedule', (req, res) => {
+  //SQL QUERY TO INSERT NEW SCHEDULE BASE ON values(req.body.trainNo, req.body.stationName, req.body.departureTime, req.body.arrivalTime)
+  res.redirect('/schedule');
+});
 
 app.listen(2000);
