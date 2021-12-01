@@ -4,11 +4,14 @@
 	<title>EMPLOYEES</title>
   </head>
   <body>
+    <form action="/dashboard" method="GET">
+      <input type="submit" value="Back">
+    </form>
     <h1>EMPLOYEES</h1>
     <br/>
     <form action="employees" action="POST">
-      <input type="email" name="email" placeholder="Enter an employee email...">
-      <input type="submit" value="Submit">
+      <input type="email" name="email" placeholder="Enter an employee email..." required>
+      <input type="submit" value="Submit" required>
     </form>
     <!-- VIEW OF EMPLOYEES TABLE (maybe join it with employee associates with train also)-->
   </body>

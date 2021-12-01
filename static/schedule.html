@@ -4,6 +4,9 @@
 	<title>SCHEDULE</title>
   </head>
   <body>
+    <form action="/dashboard" method="GET">
+      <input type="submit" value="Back">
+    </form>
     <h1>SCHEDULE</h1>
     <form action="/schedule" method="POST">
       <!-- Train number should be in our list of trains -->
@@ -11,11 +14,11 @@
       <input type="number" value="trainNo"><br/>
       <!-- Station name should be in our list of stations.. -->
       Station Name: 
-      <input type="text" value="stationName" placeholder="Station Name: "><br/>
+      <input type="text" value="stationName" placeholder="Station Name: " required><br/>
       Departure Time: 
-      <input type="datetime" value="departureTime" placeholder="YYY-MM-DD HH:MM:SS"><br/>
+      <input type="datetime" value="departureTime" placeholder="YYY-MM-DD HH:MM:SS" required><br/>
       Arrival Time: 
-      <input type="datetime" value="arrivalTime" placeholder="YYY-MM-DD HH:MM:SS"><br/>
+      <input type="datetime" value="arrivalTime" placeholder="YYY-MM-DD HH:MM:SS" required><br/>
       <input type="submit" value="Add Schedule">
     </form>
   </body>

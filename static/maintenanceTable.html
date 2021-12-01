@@ -4,9 +4,26 @@
 	<title>MAINTENANCE TABLE</title>
   </head>
   <body>
+    <form action="/dashboard" method="GET">
+      <input type="submit" value="Back">
+    </form>
     <h1>MAINTENANCE TABLE</h1>
-    <form>
-      
+    <h3>maintenanceEntry</h3>
+    <form action="/maintenanceEntry" method="POST">
+      <!-- FIND A WAY TO OBTAIN THE LOGIN EMAIL AND ADD IT TO THIS FORM -->
+      Maintenance Type: 
+      <input type="text" value="maintainType" placeholder="Maintenance Type" required><br>
+      Date: 
+      <input type="date" value="date" placeholder="YYYY-MM-DD" required><br>
+      First Name:  
+      <input type="text" value="fName" placeholder="John" required><br>
+      last Name:
+      <input type="text" value="lName" placeholder="Doe" required><br>
+      <input type="submit" value="submit">
+    </form>
+    <h3>cartcount</h3><br/>
+    <form action="/maintenanceCartCount" method="POST">
+      <input type="submit" value="Search">
     </form>
   </body>
 </html>

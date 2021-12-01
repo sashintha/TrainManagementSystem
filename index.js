@@ -47,4 +47,14 @@ app.post('/schedule', (req, res) => {
   res.redirect('/schedule');
 });
 
+app.post('/maintenanceEntry', (req, res) => {
+  //SQL QUERY TO INSERT NEW SCHEDULE BASE ON values(req.body.email, req.body.maintainType, req.body.date, req.body.fName, req.body.lName)
+  res.redirect('/maintenanceTable');
+});
+
+app.post('/maintenanceCartCount', (req, res) => {
+  //SQL QUERY TO SEARCH THROUGH AND COUNT ALL THE CARTS THAT HAVE BEEN MAINTAINED AND SORT BY THE MOST MAINTAINED TO LEAST MAINTAINED
+  res.redirect('/maintenanceTable');
+});
+
 app.listen(2000);
