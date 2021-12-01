@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>SCHEDULE</title>
+  </head>
+  <body>
+    <h1>SCHEDULE</h1>
+    <form action="/schedule" method="POST">
+      <!-- Train number should be in our list of trains -->
+      Train Number: 
+      <input type="number" value="trainNo"><br/>
+      <!-- Station name should be in our list of stations.. -->
+      Station Name: 
+      <input type="text" value="stationName" placeholder="Station Name: "><br/>
+      Departure Time: 
+      <input type="datetime" value="departureTime" placeholder="YYY-MM-DD HH:MM:SS"><br/>
+      Arrival Time: 
+      <input type="datetime" value="arrivalTime" placeholder="YYY-MM-DD HH:MM:SS"><br/>
+      <input type="submit" value="Add Schedule">
+    </form>
+  </body>
+</html>
