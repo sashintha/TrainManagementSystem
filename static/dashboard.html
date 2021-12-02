@@ -8,17 +8,27 @@
   <body>
     <div class="container mainContainer">
       
-      <div class="row header">
+      <div class="row header justify-content-evenly">
         <!-- header -->
-        <div class="h_title"> 
-          D A S H B O A R D 
-        </div>
+            <div class="col-1"></div>
+            <div class="col-10 h_title"> 
+              D A S H B O A R D 
+            </div>
+            <div class="col-1">
+              <form action="/" method="GET"></form>
+                <!-- <input type="submit" value="Logout"> -->
+                <button type="button" class="btn btn-dark">Logout</button>
+              </form>
+            </div>
+          
+
         <!-- search-bar -->
         <div class="h_searchBar">
             <input type="text" value="" style="width: 600px; height:35px">
           <!-- <input type="submit" value=""> --> 
         </div>
       </div>
+
       <!-- MAIN CONTENT #1 (row 1)-->
       <div class="row mainContent">
         <!-- box 1 -->
@@ -71,6 +81,7 @@
           </div>
         </div>
 			</div>
+
       <!-- MAIN CONTENT #2 (row 2) -->
       <div class="row mainContent">
         <!-- box 3 -->
@@ -123,6 +134,7 @@
           </div>
 				</div>
 			</div>
+
       <!-- MAIN CONTENT #3 (row 3) -->
       <div class="row mainContent">
         <!-- box 5 -->
@@ -186,10 +198,8 @@
 				</div>
 			</div>
 
-      <!-- <form action="/" method="GET">
-        <input type="submit" value="Logout">
-      </form>
-      <h1>DASHBOARD</h1>
+      
+      <!-- <h1>DASHBOARD</h1>
       <form action="/employees" method="GET">
           Employees:
           <input type="submit" value="Employees">

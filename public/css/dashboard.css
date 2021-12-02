@@ -13,7 +13,6 @@ body{
     padding:10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    text-align: center;
     font-weight: bold;
     background-color: #3a1717;
 }
@@ -21,13 +20,23 @@ body{
 .h_title{
     color:white;
     font-size:20px;
+    text-align: center;
+}
+
+.h_logout{
+    text-align: end;
 }
 
 .h_searchBar{
     padding:10px;
+    text-align: center;
     align-items: center;
     justify-items: center;
     background-color: #3a1717;
+}
+
+.btn{
+    border-color: white;
 }
 
 .mainContent{
