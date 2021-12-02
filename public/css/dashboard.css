@@ -41,3 +41,9 @@ body{
     color:white;
     height:500px;
 }
+
+.t_title{
+    justify-content: center;
+    color:white;
+    font-size: 20px;
+}
