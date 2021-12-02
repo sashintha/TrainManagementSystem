@@ -5,4 +5,5 @@ This is a train management system.
 * npm init <br>
 * npm install express <br>
 * npm install sql <br>
+* npm install mysql <br>
 * npm install ejs <br>
