@@ -10,5 +10,5 @@ function newConnection()
         });
         return conn;
 }
-    
+
 module.exports = newConnection;

@@ -1,12 +1,12 @@
 body{
-    background-color: #cec3a1;
+    background-color: #6a2424;
 }
 
 .mainContainer{
     /* margin-top:200px;
     width:100%;
     height:100%; */
-    background-color: #cec3a1;
+    background-color: #6a2424;
 }
 
 .header{
@@ -15,21 +15,29 @@ body{
     border-bottom-right-radius: 10px;
     text-align: center;
     font-weight: bold;
-    background-color: #5e4c5a;
+    background-color: #3a1717;
 }
 
 .h_title{
-
+    color:white;
+    font-size:20px;
 }
 
 .h_searchBar{
     padding:10px;
     align-items: center;
     justify-items: center;
-    background-color: #5e4c5a;
+    background-color: #3a1717;
 }
 
 .mainContent{
     padding:20px;
+    height:500px;
+}
+
+.entity{
+    background-color: #ce6c47;
+    border-radius: 4px;
+    color:white;
     height:500px;
 }
