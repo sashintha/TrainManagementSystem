@@ -2,32 +2,35 @@ const express = require('express');
 const app = express(); 
 const bodyParser = require('body-parser');
 const newConnection = require('./DBConnection'); //receive connection function
+// const scheduleRouter = require('./routes/route.js');
 
 app.use(express.static(__dirname + '/public')); //load styling sheets
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.set("view engine","ejs");
+app.set("view engine","ejs");
 
 //##GET##//
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/static/login.html');
 });
 
+//app.use('/', scheduleRouter);
+
 app.get('/dashboard', (req, res) => {
   let conn = newConnection();
-
   conn.query('SELECT * FROM schedule', function (err, rows, fields) {
     if (err) 
       throw err
     else{
-      //res.render('displaySchedule.ejs');
+      // //res.render('displaySchedule.ejs');
       // stuff = rows
       // for(r of stuff){
-      //   //console.log(r);
-      // }
-    }
+      //   console.log(r);
+      //console.log(results);
+      res.render('displaySchedule', { stuff: rows });
+      }
   })
   
-  res.sendFile(__dirname + '/static/dashboard.html');
+  //res.sendFile(__dirname + '/static/dashboard.html');
   conn.end();
 });
 

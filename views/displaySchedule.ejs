@@ -50,18 +50,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">12</th>
-                      <td>2022-10-31 15:42:00</td>
-                      <td>2022-10-31 10:42:00</td>
-                      <td>Late</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">109</th>
-                      <td>2021-06-06 20:19:00</td>
-                      <td>2021-06-06 10:19:00</td>
-                      <td>Early</td>
-                    </tr>
+                    
+                        <% for(var i=0; i<5; i++) {%>
+                        <tr>
+                            <th scope="row"><%=stuff[i]['trainNo']%></th>
+                            <td><%= stuff[i]['arrivalTime'] %></td>
+                            <td><%= stuff[i]['departureTime'] %></td>
+                            <td><%= stuff[i]['routeStatus'] %></td>
+                        </tr>
+                        <% } %>
                   </tbody>
                 </table>
                 <!-- <table class="table" style="color:white">
