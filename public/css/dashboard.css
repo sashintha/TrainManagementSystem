@@ -2,6 +2,10 @@ body{
     background-color: #6a2424;
 }
 
+hr{
+    margin:0;
+}
+
 .mainContainer{
     /* margin-top:200px;
     width:100%;
@@ -61,17 +65,16 @@ body{
     height:410px;
 }
 
-.box_footer{
-    background-color:#3a1717;
+.box_footer{ 
     height:38px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     text-align: center;
     align-items: center;
     font-size: 20px;
+    
 }
 
-.box_footer:hover{
-    opacity: 0.8;
-    cursor: pointer;
+.reBtn{
+    border-color: #343a40;
+    border-style: none;
+    width:100%;
 }
