@@ -28,12 +28,12 @@
       <!-- MAIN CONTENT #1 (row 1)-->
       <div class="row mainContent">
         <!-- box 1 -->
-        <div class="col-7">
+        <div class="col-8">
           <div class="p-3 border bg-dark entity">
             <!-- TABLE TITLE -->
             <div class="row">
               <div class="col t_title">
-                S C H E D U L E
+                S C H E D U L E S
               </div>
             </div>
             <div class="row">
@@ -48,12 +48,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                        <% for(var i=0; i<5; i++) {%>
+                        <% for(var i=0; i<6; i++) {%>
                         <tr>
-                            <th scope="row"><%=stuff[i]['trainNo']%></th>
-                            <td><%= stuff[i]['arrivalTime'] %></td>
-                            <td><%= stuff[i]['departureTime'] %></td>
-                            <td><%= stuff[i]['routeStatus'] %></td>
+                            <th scope="row"><%=scheduleData[i]['trainNo']%></th>
+                            <td><%= scheduleData[i]['arrivalTime'] %></td>
+                            <td><%= scheduleData[i]['departureTime'] %></td>
+                            <td><%= scheduleData[i]['routeStatus'] %></td>
                         </tr>
                         <% } %>
                   </tbody>
@@ -63,31 +63,48 @@
             <div class="row">
               <hr>
               <form action="/schedule" method="GET" class="box_footer">
-                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW SCHEDULES</button>
+                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL SCHEDULES</button>
               </form>
             </div>
           </div>
         </div> 
         <!-- col end -->
         <!-- box 2 -->
-        <div class="col-5">
+        <div class="col-4">
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                M A I N T E N A N C E
+                E M P L O Y E E S
               </div>
             </div>
             <div class="row">
-              <div class="col table_content">
-                T A B L E
+              <div class="row">
+                <div class="col table_content">
+                  <table class="table" style="color:white">
+                    <thead>
+                      <tr>
+                        <th scope="col">Department</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                          <% for(var i=0; i<t_employees.length; i++) {%>
+                          <tr>
+                              <th scope="row"><%=t_employees[i]['dpt']%></th>
+                              <td><%= t_employees[i]['COUNT(*)'] %></td>
+                          </tr>
+                          <% } %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <hr>
               <form action="/maintenanceTable" method="GET" class="box_footer">
                 <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW MAINTENANCE</button>
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
 			</div>
@@ -145,18 +162,47 @@
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                E M P L O Y E E
+                E M P L O Y E E S
               </div>
             </div>
             <div class="row">
               <div class="col table_content">
-                T A B L E
+                <table class="table" style="color:white">
+                  <thead>
+                    <tr>
+                      <th scope="col">Email</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Phone #</th>
+                      <th scope="col">Salary</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Start Date</th>
+                      <th scope="col">Vactaion Days</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        <% for(var i=0; i<5; i++) {%>
+                        <tr>
+                            <td><%=employeeTable[i]['email']%></td>
+                            <td><%= employeeTable[i]['fName'] %></td>
+                            <td><%= employeeTable[i]['lName'] %></td>
+                            <td><%= employeeTable[i]['phoneNo'] %></td>
+                            <td><%= employeeTable[i]['salary'] %></td>
+                            <td><%= employeeTable[i]['pos'] %></td>
+                            <td><%= employeeTable[i]['dpt'] %></td>
+                            <td><%= employeeTable[i]['employmentStart'] %></td>
+                            <td><%= employeeTable[i]['allocatedVacation'] %></td>
+                        </tr>
+                        <% } %>
+                  </tbody>
+                </table>
               </div>
             </div>
             <div class="row">
               <hr>
               <form action="/employees" method="GET" class="box_footer">
-                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW EMPLOYEES</button>
+                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL EMPLOYEES</button>
               </form>
             </div>
           </div>

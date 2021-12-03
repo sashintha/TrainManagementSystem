@@ -6,7 +6,8 @@ function newConnection()
             host:'localhost',
             user: 'root',
             password:'Traindb123',
-            database:'data_storage_societymk2.0'
+            database:'data_storage_societymk2.0',
+            multipleStatements: true
         });
         return conn;
 }

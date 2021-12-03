@@ -22,13 +22,58 @@
               <button type="submit" class="btn btn-dark">Logout</button>
             </form>
           </div>
-
         <!-- search-bar -->
         <div class="h_searchBar">
             <input type="text" value="" style="width: 600px; height:35px">
         </div>
       </div>
-      <!-- <form action="/dashboard" method="GET">
+
+      <div class="row mainContent">
+        <div class="col-12" style="padding-bottom:50px;">
+            <div class="p-3 border bg-dark entity">
+                <div class="col table_content">
+                    <table class="table" style="color:white">
+                      <thead>
+                        <tr>
+                          <th scope="col">Email</th>
+                          <th scope="col">First Name</th>
+                          <th scope="col">Last Name</th>
+                          <th scope="col">Phone #</th>
+                          <th scope="col">Salary</th>
+                          <th scope="col">Position</th>
+                          <th scope="col">Department</th>
+                          <th scope="col">Start Date</th>
+                          <th scope="col">Vactaion Days</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <% for(var i=0; i<e_list.length; i++) {%>
+                          <tr>
+                              <td><%=e_list[i]['email']%></td>
+                              <td><%= e_list[i]['fName'] %></td>
+                              <td><%= e_list[i]['lName'] %></td>
+                              <td><%= e_list[i]['phoneNo'] %></td>
+                              <td><%= e_list[i]['salary'] %></td>
+                              <td><%= e_list[i]['pos'] %></td>
+                              <td><%= e_list[i]['dpt'] %></td>
+                              <td><%= e_list[i]['employmentStart'] %></td>
+                              <td><%= e_list[i]['allocatedVacation'] %></td>
+                          </tr>
+                          <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </body>
+</html>
+
+
+
+<!-- <form action="/dashboard" method="GET">
         <input type="submit" value="Back">
       </form>
       <h1>EMPLOYEES</h1>
@@ -38,8 +83,3 @@
         <input type="email" name="email" placeholder="Enter an employee email..." required>
         <input type="submit" value="Submit" required>
       </form> -->
-    </div>
-    
-    <!-- VIEW OF EMPLOYEES TABLE (maybe join it with employee associates with train also)-->
-  </body>
-</html>

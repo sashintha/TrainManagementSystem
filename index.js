@@ -15,11 +15,20 @@ app.get('/', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
   let conn = newConnection();
-  conn.query(`SELECT * FROM schedule`, function (err, rows, fields) {
+
+  var sql = 
+  `
+  SELECT * FROM schedule; 
+  SELECT dpt, COUNT(*) FROM employee GROUP BY dpt;
+  SELECT * FROM employee
+  `
+  ;
+
+  conn.query(sql, function (err, rows, fields) {
     if (err) 
       throw err
     else{
-      res.render('dashboard', { stuff: rows });
+      res.render('dashboard', {scheduleData: rows[0], t_employees: rows[1], employeeTable: rows[2]});
       }
   })
   conn.end();
@@ -41,7 +50,19 @@ app.get('/schedule', (req, res) => {
       }
   })
   conn.end();
-  //res.sendFile(__dirname + '/static/employees.html');
+});
+
+app.get('/employees', (req, res) => {
+  let conn = newConnection();
+    conn.query(`SELECT * FROM employee`
+  , function (err, rows, fields) {
+    if (err) 
+      throw err
+    else{
+      res.render('employees', { e_list: rows });
+      }
+  })
+  conn.end();
 });
 
 
@@ -55,16 +76,6 @@ app.post('/', (req, res) => {
   } else {
     res.redirect('/');
   }
-});
-
-app.post('/employees', (req, res) => {
-  //SQL QUERY GET EMPLOYEE NAME BY EMAIL using req.body.email
-  res.redirect('/employees');
-});
-
-app.post('/schedule', (req, res) => {
-  //SQL QUERY TO INSERT NEW SCHEDULE BASE ON values(req.body.trainNo, req.body.stationName, req.body.departureTime, req.body.arrivalTime)
-  res.redirect('/schedule');
 });
 
 app.post('/maintenanceEntry', (req, res) => {
