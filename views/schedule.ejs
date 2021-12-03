@@ -23,13 +23,47 @@
               <button type="submit" class="btn btn-dark">Logout</button>
             </form>
           </div>
-
         <!-- search-bar -->
         <div class="h_searchBar">
             <input type="text" value="" style="width: 600px; height:35px">
         </div>
       </div>
-      <!-- 
+      <div class="row mainContent">
+        <div class="col-12" style="padding-bottom:50px;">
+            <div class="p-3 border bg-dark entity">
+                <div class="col table_content">
+                    <table class="table" style="color:white">
+                      <thead>
+                        <tr>
+                          <th scope="col">Train</th>
+                          <th scope="col">Station Name</th>
+                          <th scope="col">Arrival Time</th>
+                          <th scope="col">Departure Time</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            <% for(var i=0; i<logs.length; i++) {%>
+                            <tr>
+                                <th scope="row"><%=logs[i]['TrainNo']%></th>
+                                <td><%= logs[i]['StationName'] %></td>
+                                <td><%= logs[i]['arrivalTime'] %></td>
+                                <td><%= logs[i]['departureTime'] %></td>
+                                <td><%= logs[i]['routeStatus'] %></td>
+                            </tr>
+                            <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- 
       <form action="/schedule" method="POST">
         Train Number: 
         <input type="number" value="trainNo"><br/>
@@ -41,6 +75,3 @@
         <input type="datetime" value="arrivalTime" placeholder="YYY-MM-DD HH:MM:SS" required><br/>
         <input type="submit" value="Add Schedule">
       </form> -->
-    </div>
-  </body>
-</html>

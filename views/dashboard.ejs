@@ -7,19 +7,17 @@
   </head>
   <body>
     <div class="container mainContainer">
-      
       <div class="row header justify-content-evenly">
         <!-- header -->
             <div class="col-1"></div>
             <div class="col-10 h_title"> 
-              D A S H B O A R D 
+              D A S H B O A R D
             </div>
             <div class="col-1">
               <form action="/" method="GET">
                 <button type="submit" class="btn btn-dark">Logout</button>
               </form>
             </div>
-          
 
         <!-- search-bar -->
         <div class="h_searchBar">
@@ -43,63 +41,23 @@
                 <table class="table" style="color:white">
                   <thead>
                     <tr>
-                      <th scope="col">Train #</th>
+                      <th scope="col">Train</th>
                       <th scope="col">Arrival</th>
                       <th scope="col">Departure</th>
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">53</th>
-                      <td>2022-05-18 11:26:00</td>
-                      <td>2022-05-18 07:26:00</td>
-                      <td>On-Time</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">12</th>
-                      <td>2022-10-31 15:42:00</td>
-                      <td>2022-10-31 10:42:00</td>
-                      <td>Late</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">109</th>
-                      <td>2021-06-06 20:19:00</td>
-                      <td>2021-06-06 10:19:00</td>
-                      <td>Early</td>
-                    </tr>
+                        <% for(var i=0; i<5; i++) {%>
+                        <tr>
+                            <th scope="row"><%=stuff[i]['trainNo']%></th>
+                            <td><%= stuff[i]['arrivalTime'] %></td>
+                            <td><%= stuff[i]['departureTime'] %></td>
+                            <td><%= stuff[i]['routeStatus'] %></td>
+                        </tr>
+                        <% } %>
                   </tbody>
                 </table>
-                <!-- <table class="table" style="color:white">
-                  <thead>
-                    <tr>
-                      <th scope="col">Train #</th>
-                      <th scope="col">Arrival</th>
-                      <th scope="col">Departure</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">53</th>
-                      <td>2022-05-18 11:26:00</td>
-                      <td>2022-05-18 07:26:00</td>
-                      <td>On-Time</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">12</th>
-                      <td>2022-10-31 15:42:00</td>
-                      <td>2022-10-31 10:42:00</td>
-                      <td>Late</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">109</th>
-                      <td>2021-06-06 20:19:00</td>
-                      <td>2021-06-06 10:19:00</td>
-                      <td>Early</td>
-                    </tr>
-                  </tbody>
-                </table> -->
               </div>
             </div>
             <div class="row">
@@ -116,7 +74,7 @@
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                M A I N T E N A N C E 
+                M A I N T E N A N C E
               </div>
             </div>
             <div class="row">
@@ -192,7 +150,7 @@
             </div>
             <div class="row">
               <div class="col table_content">
-                BRUH
+                T A B L E
               </div>
             </div>
             <div class="row">
@@ -204,21 +162,6 @@
           </div>
 				</div>
 			</div>
-
-      
-      <!-- <h1>DASHBOARD</h1>
-      <form action="/employees" method="GET">
-          Employees:
-          <input type="submit" value="Employees">
-      </form>
-      <form action="/schedule" method="GET">
-          Schedule:
-          <input type="submit" value="Schedule">
-      </form>
-      <form action="/maintenanceTable" method="GET">
-          MaintenanceLog: 
-          <input type="submit" value="MaintenanceLog">
-      </form> -->
       
     </div>
   </body>

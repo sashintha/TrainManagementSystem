@@ -15,27 +15,35 @@ app.get('/', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
   let conn = newConnection();
-  conn.query('SELECT * FROM schedule', function (err, rows, fields) {
+  conn.query(`SELECT * FROM schedule`, function (err, rows, fields) {
     if (err) 
       throw err
     else{
-      res.render('displaySchedule', { stuff: rows });
+      res.render('dashboard', { stuff: rows });
       }
   })
   conn.end();
 });
 
-app.get('/employees', (req, res) => {
-  res.sendFile(__dirname + '/static/employees.html');
-});
-
 app.get('/schedule', (req, res) => {
-  res.sendFile(__dirname + '/static/schedule.html');
+  let conn = newConnection();
+    conn.query(`
+    SELECT train.trainNo as TrainNo, train.stationName as StationName, arrivalTime, departureTime, routeStatus
+    FROM train
+    INNER JOIN schedule
+    ON train.trainNo = schedule.trainNo
+    WHERE rdyForUtil = 'No';`
+  , function (err, rows, fields) {
+    if (err) 
+      throw err
+    else{
+      res.render('schedule', { logs: rows });
+      }
+  })
+  conn.end();
+  //res.sendFile(__dirname + '/static/employees.html');
 });
 
-app.get('/maintenanceTable', (req, res) => {
-  res.sendFile(__dirname + '/static/maintenanceTable.html');
-});
 
 //##POST##//
 app.post('/', (req, res) => {
