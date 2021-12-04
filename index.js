@@ -20,7 +20,7 @@ app.get('/dashboard', (req, res) => {
   SELECT * FROM schedule; 
   SELECT dpt, COUNT(*) FROM employee GROUP BY dpt;
   SELECT * FROM employee;
-  SELECT * FROM maintenanceLog;
+  SELECT * FROM maintenanceLog WHERE supervisedBy = '${app.get('currentLogin')}';
   `
   ;
   conn.query(sql, function (err, rows, fields) {
@@ -68,7 +68,7 @@ app.get('/maintenance', (req, res) => {
   let conn = newConnection();
   var sql =
   `
-  SELECT * FROM maintenancelog;
+  SELECT * FROM maintenancelog WHERE supervisedBy = '${app.get('currentLogin')}';
   SELECT cartNo, COUNT(*) FROM maintenanceLog GROUP BY cartNo
   `
   conn.query(sql, function (err, rows, fields) {
@@ -87,7 +87,10 @@ app.post('/', (req, res) => {
   //Create a database query to get all maintenance emails 
   //Check if the req.body.email exists in that query
   //If it is, and pass is admin, login, otherwise redirect(/)
-  if (req.body.email == 'admin' && req.body.password == 'admin') {
+  app.set('currentLogin', req.body.email);
+  console.log(app.get('currentLogin'));
+
+  if (req.body.password == 'admin') {
     res.redirect('/dashboard');
   } else {
     res.redirect('/');
