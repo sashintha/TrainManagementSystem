@@ -74,7 +74,7 @@
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                E M P L O Y E E S
+                S T A F F
               </div>
             </div>
             <div class="row">
@@ -99,12 +99,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="row">
-              <hr>
-              <form action="/maintenanceTable" method="GET" class="box_footer">
-                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW MAINTENANCE</button>
-              </form>
-            </div> -->
           </div>
         </div>
 			</div>
@@ -112,11 +106,11 @@
       <!-- MAIN CONTENT #2 (row 2) -->
       <div class="row mainContent">
         <!-- box 3 -->
-        <div class="col-5 gy-4">
+        <div class="col-3 gy-4">
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                T I T L E
+                READY FOR UTIL
               </div>
             </div>
             <div class="row">
@@ -133,22 +127,45 @@
           </div>
 				</div>
         <!-- box 4 -->
-        <div class="col-7 gy-4">
+        <div class="col-9 gy-4">
           <div class="p-3 border bg-dark entity">
             <div class="row">
               <div class="col t_title">
-                T I T L E
+                M A I N T E N A N C E
               </div>
             </div>
             <div class="row">
               <div class="col table_content">
-                T A B L E
+                <table class="table" style="color:white">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Maintain Date</th>
+                      <th scope="col">Performed By</th>
+                      <th scope="col">Cost</th>
+                      <th scope="col">Supervised By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        <% for(var i=0; i<4; i++) {%>
+                        <tr>
+                            <th scope="row"><%= main_log[i]['maintainLogID'] %></th>
+                            <td><%= main_log[i]['maintainType'] %></td>
+                            <td><%= main_log[i]['maintainDate'] %></td>
+                            <td><%= main_log[i]['maintainPerformBy'] %></td>
+                            <td><%= main_log[i]['cost'] %></td>
+                            <td><%= main_log[i]['supervisedBy']%></td>
+                        </tr>
+                        <% } %>
+                  </tbody>
+                </table>
               </div>
             </div>
             <div class="row">
               <hr>
-              <form action="/schedule" method="GET" class="box_footer">
-                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW SOMETHING</button>
+              <form action="/maintenance" method="GET" class="box_footer">
+                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL MAINTENANCE LOGS</button>
               </form>
             </div>
           </div>

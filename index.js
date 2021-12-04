@@ -15,20 +15,19 @@ app.get('/', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
   let conn = newConnection();
-
   var sql = 
   `
   SELECT * FROM schedule; 
   SELECT dpt, COUNT(*) FROM employee GROUP BY dpt;
-  SELECT * FROM employee
+  SELECT * FROM employee;
+  SELECT * FROM maintenanceLog;
   `
   ;
-
   conn.query(sql, function (err, rows, fields) {
     if (err) 
       throw err
     else{
-      res.render('dashboard', {scheduleData: rows[0], t_employees: rows[1], employeeTable: rows[2]});
+      res.render('dashboard', {scheduleData: rows[0], t_employees: rows[1], employeeTable: rows[2], main_log: rows[3]});
       }
   })
   conn.end();
@@ -60,6 +59,23 @@ app.get('/employees', (req, res) => {
       throw err
     else{
       res.render('employees', { e_list: rows });
+      }
+  })
+  conn.end();
+});
+
+app.get('/maintenance', (req, res) => {
+  let conn = newConnection();
+  var sql =
+  `
+  SELECT * FROM maintenancelog;
+  SELECT cartNo, COUNT(*) FROM maintenanceLog GROUP BY cartNo
+  `
+  conn.query(sql, function (err, rows, fields) {
+    if (err) 
+      throw err
+    else{
+      res.render('maintenance', { main_log: rows[0], cartCount: rows[1]});
       }
   })
   conn.end();

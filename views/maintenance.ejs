@@ -28,7 +28,66 @@
             <input type="text" value="" style="width: 600px; height:35px">
         </div>
       </div>
-      <!-- <form action="/dashboard" method="GET">
+      <div class="row mainContent">
+        <div class="col-10 gy-2" style="padding-bottom: 50px;">
+          <div class="p-3 border bg-dark entity">
+            <div class="col table_content">
+              <table class="table" style="color:white">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Maintain Date</th>
+                    <th scope="col">Performed By</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Supervised By</th>
+                  </tr>
+                </thead>
+                <tbody>
+                      <% for(var i=0; i<main_log.length; i++) {%>
+                      <tr>
+                          <th scope="row"><%= main_log[i]['maintainLogID'] %></th>
+                          <td><%= main_log[i]['maintainType'] %></td>
+                          <td><%= main_log[i]['maintainDate'] %></td>
+                          <td><%= main_log[i]['maintainPerformBy'] %></td>
+                          <td><%= main_log[i]['cost'] %></td>
+                          <td><%= main_log[i]['supervisedBy']%></td>
+                      </tr>
+                      <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 gy-2" style="padding-bottom: 50px;">
+          <div class="p-3 border bg-dark entity">
+            <div class="col table_content">
+              <table class="table" style="color:white">
+                <thead>
+                  <tr>
+                    <th scope="col">Cart</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                      <% for(var i=0; i<cartCount.length; i++) {%>
+                      <tr>
+                          <th scope="row"><%= cartCount[i]['cartNo'] %></th>
+                          <td><%= cartCount[i]['COUNT(*)'] %></td>
+                      </tr>
+                      <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- <form action="/dashboard" method="GET">
         <input type="submit" value="Back">
       </form>
       <h1>MAINTENANCE TABLE</h1>
@@ -49,6 +108,3 @@
       <form action="/maintenanceCartCount" method="POST">
         <input type="submit" value="Search">
       </form> -->
-    </div>
-  </body>
-</html>

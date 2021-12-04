@@ -29,3 +29,18 @@ body{
 .btn{
     border-color: white;
 }
+
+/* Default End */
+
+.entity{
+    background-color: #ce6c47;
+    border-radius: 4px;
+    color:white;
+    height:730px;
+    overflow-y: scroll;
+}
+
+.mainContent{
+    padding:20px;
+    height:200px;
+}
