@@ -33,14 +33,28 @@ body{
 /* default end */
 
 .entity{
-    background-color: #ce6c47;
     border-radius: 4px;
     color:white;
     height:730px;
     overflow-y: scroll;
 }
 
+.entityTitle{
+    border-radius: 4px;
+    color:white;
+}
+
 .mainContent{
-    padding:20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     height:200px;
+}
+
+.titleContent{
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
