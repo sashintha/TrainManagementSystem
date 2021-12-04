@@ -87,6 +87,7 @@ app.post('/', (req, res) => {
   app.set('currentLogin', req.body.email);
   app.set('currentType', 'supervisedBy');
 
+  app.set('actuallyExists', false);
   let conn = newConnection();
   var sql =
   `
@@ -100,24 +101,27 @@ app.post('/', (req, res) => {
   conn.query(sql, function (err, rows, fields) {
     for (row in rows[0]) {
       if (row > 10) {
+        app.set('actuallyExists', true);
         app.set('currentType', 'maintainPerformBy');
         break;
       }
     }
     for (row in rows[1]) {
       if (row > 10) {
-        console.log("YES");
+        app.set('actuallyExists', true);
         app.set('currentType', 'supervisedBy');
         break;
       }
     }
-  })
 
-  if (req.body.password == 'admin') {
-    res.redirect('/dashboard');
-  } else {
-    res.redirect('/');
-  }
+    if (app.get('actuallyExists') == false) {
+      res.redirect('/');
+    } else if (req.body.password == 'admin') {
+      res.redirect('/dashboard');
+    } else {
+      res.redirect('/');
+    }
+  })
   conn.end();
 });
 
