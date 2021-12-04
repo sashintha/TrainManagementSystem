@@ -20,7 +20,7 @@ app.get('/dashboard', (req, res) => {
   SELECT * FROM schedule; 
   SELECT dpt, COUNT(*) FROM employee GROUP BY dpt;
   SELECT * FROM employee;
-  SELECT * FROM maintenanceLog WHERE supervisedBy = '${app.get('currentLogin')}';
+  SELECT * FROM maintenanceLog WHERE  ${app.get('currentType')} = '${app.get('currentLogin')}';
   `
   ;
   conn.query(sql, function (err, rows, fields) {
@@ -68,7 +68,7 @@ app.get('/maintenance', (req, res) => {
   let conn = newConnection();
   var sql =
   `
-  SELECT * FROM maintenancelog WHERE supervisedBy = '${app.get('currentLogin')}';
+  SELECT * FROM maintenanceLog WHERE ${app.get('currentType')} = '${app.get('currentLogin')}';
   SELECT cartNo, COUNT(*) FROM maintenanceLog GROUP BY cartNo
   `
   conn.query(sql, function (err, rows, fields) {
@@ -84,17 +84,41 @@ app.get('/maintenance', (req, res) => {
 
 //##POST##//
 app.post('/', (req, res) => {
-  //Create a database query to get all maintenance emails 
-  //Check if the req.body.email exists in that query
-  //If it is, and pass is admin, login, otherwise redirect(/)
   app.set('currentLogin', req.body.email);
-  console.log(app.get('currentLogin'));
+  app.set('currentType', 'supervisedBy');
+
+  let conn = newConnection();
+  var sql =
+  `
+  SELECT maintainPerformBy
+  FROM maintenanceLog
+  WHERE EXISTS (SELECT maintainPerformBy FROM maintenanceLog WHERE maintainPerformBy = '${app.get('currentLogin')}');
+  SELECT supervisedBy
+  FROM maintenanceLog
+  WHERE EXISTS (SELECT supervisedBy FROM maintenanceLog WHERE supervisedBy = '${app.get('currentLogin')}');
+  `
+  conn.query(sql, function (err, rows, fields) {
+    for (row in rows[0]) {
+      if (row > 10) {
+        app.set('currentType', 'maintainPerformBy');
+        break;
+      }
+    }
+    for (row in rows[1]) {
+      if (row > 10) {
+        console.log("YES");
+        app.set('currentType', 'supervisedBy');
+        break;
+      }
+    }
+  })
 
   if (req.body.password == 'admin') {
     res.redirect('/dashboard');
   } else {
     res.redirect('/');
   }
+  conn.end();
 });
 
 app.post('/maintenanceEntry', (req, res) => {
