@@ -171,6 +171,50 @@ app.post('/', (req, res) => {
   conn.end();
 });
 
+app.post('/employeeSubmit', (req, res) => {
+   //Start the connection
+   let conn = newConnection();
+
+  //Create sql statment
+  var sql =
+   `
+  INSERT INTO employees VALUES(${req.body.email}, ${req.body.fName}, ${req.body.lName}, ${req.body.phoneNo}, ${req.body.salary}, ${req.body.pos}, ${req.body.department}, ${req.body.employmentStart}, ${req.body.allocatedVacation} )
+   `
+   //Sen the query
+   conn.query(sql, function (err, rows, fields) {
+     if (err) 
+       throw err
+     else{
+       //Render the employee if no errors
+       res.redirect('/employees');
+       }
+   })
+   //End the connection
+   conn.end();  
+})
+
+app.post('/dashboardRefresh', (req, res) => {
+     //Start the connection
+     let conn = newConnection();
+
+     //Create sql statment
+     var sql =
+      `
+     SELECT * FROM 
+      `
+      //Sen the query
+      conn.query(sql, function (err, rows, fields) {
+        if (err) 
+          throw err
+        else{
+          //Render the employee if no errors
+          res.redirect('/employees');
+          }
+      })
+      //End the connection
+      conn.end(); 
+})
+
 app.post('/maintenanceEntry', (req, res) => {
   //SQL QUERY TO INSERT NEW SCHEDULE BASE ON values(req.body.email, req.body.maintainType, req.body.date, req.body.fName, req.body.lName)
   res.redirect('/maintenanceTable');
