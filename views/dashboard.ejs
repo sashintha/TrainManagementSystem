@@ -72,59 +72,41 @@
                 S T A F F
               </div>
             </div>
-            <div class="row">
-              <div class="row">
-                <div class="col table_content">
-                  <table class="table" style="color:white">
-                    <thead>
-                      <tr>
-                        <th scope="col">Department</th>
-                        <th scope="col">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                          <% for(var i=0; i<t_employees.length; i++) {%>
-                          <tr>
-                              <th><%=t_employees[i]['dpt']%></th>
-                              <td><%= t_employees[i]['COUNT(*)'] %></td>
-                          </tr>
-                          <% } %>
-                    </tbody>
-                  </table>
-                </div>
-                <form action="/giveRaise" method="GET">
-                  <input type="submit" value="Give Raise">
-                </form>
+            <div class="row" style="height:350px">
+              <div class="col-12 table_content">
+                <table class="table" style="color:white">
+                  <thead>
+                    <tr>
+                      <th scope="col">Department</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        <% for(var i=0; i<t_employees.length; i++) {%>
+                        <tr>
+                            <th><%=t_employees[i]['dpt']%></th>
+                            <td><%= t_employees[i]['COUNT(*)'] %></td>
+                        </tr>
+                        <% } %>
+                  </tbody>
+                </table>
               </div>
+            </div>
+            <div class="row" style="text-align: center; padding-bottom:50px;">
+              <laebel style="padding:10px">
+                Update Salary
+              </laebel>
+              <form action="/giveRaise" method="GET">
+                <button type="submit" class="btn btn-light">Give Raise</button>
+              </form>
             </div>
           </div>
         </div>
 			</div>
 
       <!-- MAIN CONTENT #2 (row 2) -->
-      <div class="row mainContent">
+      <div class="row mainContent" style="justify-content: center;">
         <!-- box 3 -->
-        <div class="col-3 gy-4">
-          <div class="p-3 border bg-dark entity">
-            <div class="row">
-              <div class="col t_title">
-                READY FOR UTIL
-              </div>
-            </div>
-            <div class="row">
-              <div class="col table_content">
-                T A B L E
-              </div>
-            </div>
-            <div class="row">
-              <hr>
-              <form action="/schedule" method="GET" class="box_footer">
-                <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW SOMETHING</button>
-              </form>
-            </div>
-          </div>
-				</div>
-        <!-- box 4 -->
         <div class="col-9 gy-4">
           <div class="p-3 border bg-dark entity">
             <div class="row">
@@ -172,7 +154,7 @@
 
       <!-- MAIN CONTENT #3 (row 3) -->
       <div class="row mainContent">
-        <!-- box 5 -->
+        <!-- box 4 -->
         <div class="col-12 gy-8" style="padding-top:50px; padding-bottom:50px;">
           <div class="p-3 border bg-dark entity">
             <div class="row">
@@ -223,7 +205,6 @@
           </div>
 				</div>
 			</div>
-      
     </div>
   </body>
 </html>
