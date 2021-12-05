@@ -14,6 +14,30 @@ app.get('/', (req, res) => {
 });
 
 //Main page
+app.get('/giveRaise', (req, res) => {
+ 
+  //Set connection
+  let conn = newConnection();
+
+  //CHANGE HERE
+  var sql = 
+  `
+  UPDATE employee SET salary = salary + 100 WHERE email = ANY(SELECT employee_email FROM employee_associates_with_a_train WHERE train_trainNo = ANY(select trainNo FROM cart_transport WHERE maintainReq = 'Yes' AND timeUntilNextMaintain = '2019-12-25'))
+  `
+  //Send the query 
+  conn.query(sql, function (err, rows, fields) {
+    if (err) 
+      throw err
+    else{
+      //Render each query
+      res.redirect('/dashboard')
+      }
+  })
+  //End the connection
+  conn.end();
+});
+
+//Main page
 app.get('/dashboard', (req, res) => {
   //Set connection
   let conn = newConnection();
