@@ -22,7 +22,7 @@ app.get('/giveRaise', (req, res) => {
   //CHANGE HERE
   var sql = 
   `
-  UPDATE employee SET salary = salary + 100 WHERE email = ANY(SELECT employee_email FROM employee_associates_with_a_train WHERE train_trainNo = ANY(select trainNo FROM cart_transport WHERE maintainReq = 'Yes' AND timeUntilNextMaintain = '2019-12-25'))
+  Update employee SET salary = salary + 1000 WHERE email = ANY(select employee_email FROM employee_associates_with_a_train WHERE train_trainNo = ANY (select trainNo FROM cart_transport WHERE maintainReq = 'Yes' and  timeUntilNextMaintain = '2021-12-25'))
   `
   //Send the query 
   conn.query(sql, function (err, rows, fields) {
