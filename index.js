@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 app.get('/dashboard', (req, res) => {
   //Set connection
   let conn = newConnection();
+
   //Run 4 queries 
   var sql = 
   `
@@ -43,14 +44,22 @@ app.get('/dashboard', (req, res) => {
 app.get('/schedule', (req, res) => {
   //Create a new connection
   let conn = newConnection();
-    //Send the FIRST COMPLEX FUNCTION QUERY
-    conn.query(`
-    SELECT train.trainNo as TrainNo, train.stationName as StationName, arrivalTime, departureTime, routeStatus
-    FROM train
-    INNER JOIN schedule
-    ON train.trainNo = schedule.trainNo
-    WHERE rdyForUtil = 'Yes';`
-  , function (err, rows, fields) {
+
+  app.set('andCart', '');
+
+
+  if (req.query.trainNo != undefined && req.query.trainNo <= 100) {
+    app.set('andCart', `AND train.trainNo=${req.query.trainNo} `);
+  }
+  
+
+  conn.query(`
+  SELECT train.trainNo as TrainNo, train.stationName as StationName, arrivalTime, departureTime, routeStatus
+  FROM train
+  INNER JOIN schedule
+  ON train.trainNo = schedule.trainNo
+  WHERE rdyForUtil = 'Yes' ${app.get('andCart')};`,
+  function (err, rows, fields) {
     if (err) 
       throw err
     else{
@@ -92,7 +101,7 @@ app.get('/maintenance', (req, res) => {
   var sql =
   `
   SELECT * FROM maintenanceLog WHERE ${app.get('currentType')} = '${app.get('currentLogin')}';
-  SELECT cartNo, COUNT(*) FROM maintenanceLog GROUP BY cartNo
+  SELECT cartNo, COUNT(*) FROM maintenanceLog GROUP BY cartNo ORDER BY COUNT(cartNo) DESC;
   `
   //Sen the query
   conn.query(sql, function (err, rows, fields) {
@@ -191,28 +200,6 @@ app.post('/employeeSubmit', (req, res) => {
    })
    //End the connection
    conn.end();  
-})
-
-app.post('/dashboardRefresh', (req, res) => {
-     //Start the connection
-     let conn = newConnection();
-
-     //Create sql statment
-     var sql =
-      `
-     SELECT * FROM 
-      `
-      //Sen the query
-      conn.query(sql, function (err, rows, fields) {
-        if (err) 
-          throw err
-        else{
-          //Render the employee if no errors
-          res.redirect('/employees');
-          }
-      })
-      //End the connection
-      conn.end(); 
 })
 
 app.post('/maintenanceEntry', (req, res) => {
