@@ -5,7 +5,7 @@ function newConnection()
     let conn = mysql.createConnection({
             host:'localhost',
             user: 'root',
-            password:'jmutton2sqlroot',
+            password:'Traindb123',
             database:'data_storage_societymk2.0',
             multipleStatements: true
         });

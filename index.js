@@ -75,14 +75,20 @@ app.get('/schedule', (req, res) => {
 app.get('/employees', (req, res) => {
   //Create a new connection
   let conn = newConnection();
-  //Get all employees
-  conn.query(`SELECT * FROM employee`
-  , function (err, rows, fields) {
+
+  //create sql statement with multi statements
+  var sql =
+  `
+  SELECT * FROM employee;
+  SELECT * FROM employee_associates_with_a_train;
+  `
+  //Get all employees & employees associated with a train
+  conn.query(sql, function (err, rows, fields) {
     if (err) 
       throw err
     else{
       //Render the response
-      res.render('employees', { e_list: rows });
+      res.render('employees', { e_list: rows[0], e_associates: rows[1] });
       }
   })
   //End the connection
@@ -187,7 +193,7 @@ app.post('/employeeSubmit', (req, res) => {
   //Create sql statment
   var sql =
    `
-  INSERT INTO employees VALUES(${req.body.email}, ${req.body.fName}, ${req.body.lName}, ${req.body.phoneNo}, ${req.body.salary}, ${req.body.pos}, ${req.body.department}, ${req.body.employmentStart}, ${req.body.allocatedVacation} )
+  INSERT INTO employee VALUES('${req.body.email}', '${req.body.fName}', '${req.body.lName}', '${req.body.phoneNo}', '${req.body.salary}', '${req.body.pos}', '${req.body.department}', '${req.body.employmentStart}', '${req.body.allocatedVacation}' )
    `
    //Sen the query
    conn.query(sql, function (err, rows, fields) {

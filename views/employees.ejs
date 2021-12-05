@@ -22,61 +22,102 @@
               <button type="submit" class="btn btn-dark">Logout</button>
             </form>
           </div>
-        <!-- search-bar -->
       </div>
-
       <div class="row mainContent">
         <div class="col-12" style="padding-bottom:50px;">
-            <div class="p-3 border bg-dark entity">
-                <div class="col table_content">
-                    <table class="table" style="color:white">
-                      <thead>
-                        <tr>
-                          <th scope="col">Email</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Phone #</th>
-                          <th scope="col">Salary</th>
-                          <th scope="col">Position</th>
-                          <th scope="col">Department</th>
-                          <th scope="col">Start Date</th>
-                          <th scope="col">Vactaion Days</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <% for(var i=0; i<e_list.length; i++) {%>
-                          <tr>
-                              <td><%=e_list[i]['email']%></td>
-                              <td><%= e_list[i]['fName'] %></td>
-                              <td><%= e_list[i]['lName'] %></td>
-                              <td><%= e_list[i]['phoneNo'] %></td>
-                              <td><%= e_list[i]['salary'] %></td>
-                              <td><%= e_list[i]['pos'] %></td>
-                              <td><%= e_list[i]['dpt'] %></td>
-                              <td><%= e_list[i]['employmentStart'] %></td>
-                              <td><%= e_list[i]['allocatedVacation'] %></td>
-                          </tr>
-                          <% } %>
-                      </tbody>
-                    </table>
-                  </div>
+          <div class="p-3 border bg-dark entity">
+            <div class="col table_content">
+              <table class="table" style="color:white">
+                <thead>
+                  <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone #</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Vactaion Days</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<e_list.length; i++) {%>
+                    <tr>
+                        <td><%=e_list[i]['email']%></td>
+                        <td><%= e_list[i]['fName'] %></td>
+                        <td><%= e_list[i]['lName'] %></td>
+                        <td><%= e_list[i]['phoneNo'] %></td>
+                        <td><%= e_list[i]['salary'] %></td>
+                        <td><%= e_list[i]['pos'] %></td>
+                        <td><%= e_list[i]['dpt'] %></td>
+                        <td><%= e_list[i]['employmentStart'] %></td>
+                        <td><%= e_list[i]['allocatedVacation'] %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
       </div>
-      
+
+
+      <div class="row insertForm" style="padding-top:580px">
+        <div class="col-6">
+          <div class="p-3 border bg-dark entity2">
+            <div class="row" style="justify-content: center;">
+              <div class="col-3" style="text-align: right; font-size:20px">
+                Email<br>
+                First Name<br>
+                Last Name<br>
+                Phone #<br>
+                Salary<br>
+                Position<br>
+                Department<br>
+                Start Date<br>
+                Vacation Days<br>
+              </div>
+              <div class="col-5">
+                <form action="employeeSubmit" method="POST">
+                  <input type="text" name="email"> <br>
+                  <input type="text" name="fName"><br>
+                  <input type="text" name="lName"><br>
+                  <input type="text" name="phoneNo"><br>
+                  <input type="text" name="salary"><br>
+                  <input type="text" name="pos"><br>
+                  <input type="text" name="department"><br>
+                  <input type="text" name="employmentStart"><br>
+                  <input type="text" name="allocatedVacation"><br>
+                  <button type="submit" class="btn btn-light">Insert</button>
+                </form>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-dark entity2">
+            <div class="row" style="justify-content: center;">
+              <table class="table" style="color:white">
+                <thead>
+                  <tr>
+                    <th scope="col">Employee Email</th>
+                    <th scope="col">Train #</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<e_associates.length; i++) {%>
+                    <tr>
+                        <td><%=e_associates[i]['employee_email']%></td>
+                        <td><%=e_associates[i]['train_trainNo']%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>  
+        </div>
+      </div>
     </div>
   </body>
 </html>
-
-
-
-<!-- <form action="/dashboard" method="GET">
-        <input type="submit" value="Back">
-      </form>
-      <h1>EMPLOYEES</h1>
-      <br/>
-      <form action="employees" action="POST">
-        Email: 
-        <input type="email" name="email" placeholder="Enter an employee email..." required>
-        <input type="submit" value="Submit" required>
-      </form> -->

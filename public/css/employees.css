@@ -33,7 +33,6 @@ body{
 /* default end */
 
 .entity{
-    background-color: #ce6c47;
     border-radius: 4px;
     color:white;
     height:730px;
@@ -43,4 +42,16 @@ body{
 .mainContent{
     padding:20px;
     height:200px;
+}
+
+.insertForm{
+    padding:20px;
+    
+}
+
+.entity2{
+    border-radius: 4px;
+    color:white;
+    height:350px;   
+    overflow-y: scroll;
 }
