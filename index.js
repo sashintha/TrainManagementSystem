@@ -68,14 +68,10 @@ app.get('/dashboard', (req, res) => {
 app.get('/schedule', (req, res) => {
   //Create a new connection
   let conn = newConnection();
-
   app.set('andCart', '');
-
-
   if (req.query.trainNo != undefined && req.query.trainNo <= 100) {
     app.set('andCart', `AND train.trainNo=${req.query.trainNo} `);
   }
-  
 
   conn.query(`
   SELECT train.trainNo as TrainNo, train.stationName as StationName, arrivalTime, departureTime, routeStatus

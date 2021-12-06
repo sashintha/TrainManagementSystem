@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="../css/dashboard.css">
   </head>
   <body>
+    <script>
+      function updateSalary() {
+        alert("Salary updated!");
+      }
+    </script>
     <div class="container mainContainer">
       <div class="row header justify-content-evenly">
         <!-- header -->
@@ -93,11 +98,11 @@
               </div>
             </div>
             <div class="row" style="text-align: center; padding-bottom:50px;">
-              <laebel style="padding:10px">
+              <label style="padding:10px">
                 Update Salary
-              </laebel>
+              </label>
               <form action="/giveRaise" method="GET">
-                <button type="submit" class="btn btn-light">Give Raise</button>
+                <button type="submit" class="btn btn-light" onClick="updateSalary()">Give Raise</button>
               </form>
             </div>
           </div>
