@@ -54,6 +54,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- loop through maintenance table (specific to login) and display data in a table -->
                       <% for(var i=0; i<main_log.length; i++) {%>
                       <tr>
                           <th scope="row"><%= main_log[i]['maintainLogID'] %></th>
@@ -80,6 +81,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- loop through carts and display maintained cart count -->
                       <% for(var i=0; i<cartCount.length; i++) {%>
                       <tr>
                           <th scope="row"><%= cartCount[i]['cartNo'] %></th>
@@ -95,26 +97,3 @@
     </div>
   </body>
 </html>
-
-
-<!-- <form action="/dashboard" method="GET">
-        <input type="submit" value="Back">
-      </form>
-      <h1>MAINTENANCE TABLE</h1>
-      <h3>maintenanceEntry</h3>
-      <form action="/maintenanceEntry" method="POST">
-        <!-- FIND A WAY TO OBTAIN THE LOGIN EMAIL AND ADD IT TO THIS FORM -->
-        <!-- Maintenance Type: 
-        <input type="text" value="maintainType" placeholder="Maintenance Type" required><br>
-        Date: 
-        <input type="date" value="date" placeholder="YYYY-MM-DD" required><br>
-        First Name:  
-        <input type="text" value="fName" placeholder="John" required><br>
-        last Name:
-        <input type="text" value="lName" placeholder="Doe" required><br>
-        <input type="submit" value="submit">
-      </form>
-      <h3>cartcount</h3><br/>
-      <form action="/maintenanceCartCount" method="POST">
-        <input type="submit" value="Search">
-      </form> -->

@@ -7,6 +7,7 @@
   </head>
   <body>
     <script>
+      // popup showing salary was updated
       function updateSalary() {
         alert("Salary updated!");
       }
@@ -19,6 +20,7 @@
               D A S H B O A R D
             </div>
             <div class="col-1">
+              <!-- button to logout -->
               <form action="/" method="GET">
                 <button type="submit" class="btn btn-dark">Logout</button>
               </form>
@@ -40,7 +42,7 @@
               <div class="col table_content">
                 <table class="table" style="color:white">
                   <thead>
-                    <tr>
+                    <tr> 
                       <th scope="col">Train</th>
                       <th scope="col">Arrival</th>
                       <th scope="col">Departure</th>
@@ -48,6 +50,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- loop through schedule data and display in table -->
                         <% for(var i=0; i<6; i++) {%>
                         <tr>
                             <th scope="row"><%=scheduleData[i]['trainNo']%></th>
@@ -62,6 +65,7 @@
             </div>
             <div class="row">
               <hr>
+              <!-- button to view all schedules -->
               <form action="/schedule" method="GET" class="box_footer">
                 <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL SCHEDULES</button>
               </form>
@@ -87,6 +91,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- loop through employee table and display data in table -->
                         <% for(var i=0; i<t_employees.length; i++) {%>
                         <tr>
                             <th><%=t_employees[i]['dpt']%></th>
@@ -101,6 +106,7 @@
               <label style="padding:10px">
                 Update Salary
               </label>
+              <!-- button to update salary for employees working during christmas -->
               <form action="/giveRaise" method="GET">
                 <button type="submit" class="btn btn-light" onClick="updateSalary()">Give Raise</button>
               </form>
@@ -133,6 +139,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- loop through maintenance table and display data in table -->
                         <% for(var i=0; i<4; i++) {%>
                         <tr>
                             <th scope="row"><%= main_log[i]['maintainLogID'] %></th>
@@ -149,6 +156,7 @@
             </div>
             <div class="row">
               <hr>
+              <!-- button to view all maintenance -->
               <form action="/maintenance" method="GET" class="box_footer">
                 <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL MAINTENANCE LOGS</button>
               </form>
@@ -184,6 +192,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- loop through employee table and display data in table -->
                         <% for(var i=0; i<5; i++) {%>
                         <tr>
                             <td><%=employeeTable[i]['email']%></td>
@@ -203,6 +212,7 @@
             </div>
             <div class="row">
               <hr>
+              <!-- button to view all employees -->
               <form action="/employees" method="GET" class="box_footer">
                 <button type="submit" class="btn btn-dark shadow-none reBtn">VIEW ALL EMPLOYEES</button>
               </form>

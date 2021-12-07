@@ -42,6 +42,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- loop through employees and display all in a table -->
                     <% for(var i=0; i<e_list.length; i++) {%>
                     <tr>
                         <td><%=e_list[i]['email']%></td>
@@ -106,6 +107,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- loop through employees associated witha train and display in a table -->
                     <% for(var i=0; i<e_associates.length; i++) {%>
                     <tr>
                         <td><%=e_associates[i]['employee_email']%></td>
